@@ -30,9 +30,9 @@ public class PersonFacade {
     }
 
     @Transactional(readOnly = true)
-    public PersonDTO findById(Long id) {
+    public PersonDTO retrieve(String id) {
         log.info("finding person by id={}", id);
-        return personRepository.findById(id)
+        return personRepository.findById(Long.valueOf(id))
                 .map(PersonEntity::toDTO)
                 .orElseThrow(() -> new ResourceNotFound("person does not exists"));
     }
