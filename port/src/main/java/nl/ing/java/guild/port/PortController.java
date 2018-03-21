@@ -1,12 +1,14 @@
 package nl.ing.java.guild.port;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
 
-@RestController("/ports")
+@RestController
+@RequestMapping("/ports")
 public class PortController {
 
     @GetMapping
