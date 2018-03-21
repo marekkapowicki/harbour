@@ -23,6 +23,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping(value = ROOT + "/login")
 public class LoginController {
 
+    @NotNull
     private final UserFacade userFacade;
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE , produces = APPLICATION_JSON_VALUE)
