@@ -1,4 +1,4 @@
-package nl.ing.java.guild.core.api.login;
+package nl.ing.java.guild.common.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

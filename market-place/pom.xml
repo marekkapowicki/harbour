@@ -17,7 +17,11 @@
     </parent>
 
     <dependencies>
-
+        <dependency>
+            <groupId>nl.ing.java.guild</groupId>
+            <artifactId>common-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -2,8 +2,8 @@ package nl.ing.java.guild.core.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nl.ing.java.guild.core.api.login.LoginRequest;
-import nl.ing.java.guild.core.api.login.LoginResponse;
+import nl.ing.java.guild.common.login.LoginRequest;
+import nl.ing.java.guild.common.login.LoginResponse;
 import nl.ing.java.guild.core.domain.error.ResourceNotFound;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

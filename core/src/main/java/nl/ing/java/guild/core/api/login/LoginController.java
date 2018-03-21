@@ -2,6 +2,8 @@ package nl.ing.java.guild.core.api.login;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import nl.ing.java.guild.common.login.LoginRequest;
+import nl.ing.java.guild.common.login.LoginResponse;
 import nl.ing.java.guild.core.domain.user.UserFacade;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
