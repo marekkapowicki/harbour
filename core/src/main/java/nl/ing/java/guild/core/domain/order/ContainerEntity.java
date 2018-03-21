@@ -1,6 +1,7 @@
 package nl.ing.java.guild.core.domain.order;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import nl.ing.java.guild.core.domain.BaseEntity;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 @Table(name = "container")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 class ContainerEntity extends BaseEntity {
     @ManyToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL)
     private ClientEntity client;
@@ -28,5 +30,7 @@ class ContainerEntity extends BaseEntity {
     private String finalDestination;
 
     private String size;
+
+    private String description;
 
 }
