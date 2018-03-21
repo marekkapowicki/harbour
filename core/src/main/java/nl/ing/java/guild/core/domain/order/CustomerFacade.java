@@ -19,11 +19,11 @@ public class CustomerFacade {
     private final ClientRepository clientRepository;
 
     @Transactional(readOnly = true)
-    public CustomerResponse retrieveByEmail(CustomerRequest request) {
+    public CustomerResponse retrieveByEmail(String email) {
         log.info("client data request");
-        return clientRepository.findByEmail(request.getEmail())
+        return clientRepository.findByEmail(email)
                 .map(CustomerFacade::toResponse)
-                .orElseThrow(() -> new ResourceNotFound(request.getEmail()));
+                .orElseThrow(() -> new ResourceNotFound(email));
     }
 
     private static CustomerResponse toResponse(ClientEntity client) {
