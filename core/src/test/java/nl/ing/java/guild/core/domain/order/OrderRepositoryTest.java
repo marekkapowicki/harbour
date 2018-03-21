@@ -23,7 +23,7 @@ public class OrderRepositoryTest {
     @Before
     public void setUp() {
         ClientEntity client = new ClientEntity("Tijmen", null);
-        ContainerEntity order = new ContainerEntity(client,null, "newOrder", 1000.50);
+        ContainerEntity order = new ContainerEntity(client, null, new StatusEntity(), "newOrder", 1000.50);
         orderId = orderRepository.save(order).getId();
 
     }

@@ -21,7 +21,7 @@ public class ContainerEntity extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "container_id")
-    private int status;
+    private StatusEntity status;
 
     private String description;
     private Double value;
