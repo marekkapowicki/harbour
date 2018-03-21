@@ -23,14 +23,14 @@ public class OrderRepositoryTest {
     @Before
     public void setUp() {
         ClientEntity client = new ClientEntity("Tijmen", null);
-        OrderEntity order = new OrderEntity(client, "newOrder", 1000.50);
+        ContainerEntity order = new ContainerEntity(client,null, "newOrder", 1000.50);
         orderId = orderRepository.save(order).getId();
 
     }
 
     @Test
     public void shouldFindById() {
-        Optional<OrderEntity> found = orderRepository.findById(orderId);
+        Optional<ContainerEntity> found = orderRepository.findById(orderId);
 
         assertThat(found).isPresent();
     }

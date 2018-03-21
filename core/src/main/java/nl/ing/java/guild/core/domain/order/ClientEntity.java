@@ -14,7 +14,8 @@ import java.util.Set;
 public class ClientEntity extends BaseEntity {
     private String clientName;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "client" )
-    //@JoinColumn(name = "client_id")
-    private Set<OrderEntity> orders;
+    private Set<ContainerEntity> containers;
+//    private String emailAddress;
+//    private String clientPassw;
 
 }
