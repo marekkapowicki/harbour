@@ -27,7 +27,7 @@ public class LoginController {
             if (loginRequest.getLoginId().equalsIgnoreCase("ashish.jain@ing.com")){
                 log.info("matching email");
 
-                 loginResponse = new LoginResponse();
+                 loginResponse = LoginResponse.builder().role(Login.CUSTOMERROLE).build();
         }
 
         return loginResponse;
