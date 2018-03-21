@@ -22,7 +22,6 @@
         <module>core</module>
         <module>market-place</module>
         <module>port</module>
-        <module>common-model</module>
     </modules>
 
     <properties>
