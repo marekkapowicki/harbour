@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,8 +23,7 @@ public class OrderRepositoryTest {
 
     @Before
     public void setUp() {
-        ClientEntity client = new ClientEntity("Tijmen", null);
-        ContainerEntity order = new ContainerEntity(client, null, new StatusEntity(), "newOrder", 1000.50);
+        ContainerEntity order = new ContainerEntity(Clients.MAREK, null, new StatusEntity(), BigDecimal.ONE, "Utrecht");
         orderId = orderRepository.save(order).getId();
 
     }

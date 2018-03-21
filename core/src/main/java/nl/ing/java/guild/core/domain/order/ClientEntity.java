@@ -11,11 +11,10 @@ import java.util.Set;
 @Table(name="client")
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientEntity extends BaseEntity {
-    private String clientName;
+class ClientEntity extends BaseEntity {
+    private String name;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "client" )
     private Set<ContainerEntity> containers;
-//    private String emailAddress;
-//    private String clientPassw;
+    private String email;
 
 }
