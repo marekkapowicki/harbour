@@ -27,4 +27,6 @@ class ContainerEntity extends BaseEntity {
 
     private String finalDestination;
 
+    private String size;
+
 }
