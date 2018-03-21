@@ -14,8 +14,8 @@ import javax.validation.constraints.NotNull;
 public class LoginRequest {
 
     @NotNull
-    private  String loginId;
+    private String loginId;
     @NotNull
-    private  String password;
+    private String password;
 
 }

@@ -1,0 +1,1 @@
+INSERT INTO User(id, login_id, password, role) VALUES (1, 'ashish.jain@ing.com', 'somePassword', 'customer')
