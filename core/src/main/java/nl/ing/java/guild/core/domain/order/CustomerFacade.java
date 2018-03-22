@@ -49,6 +49,19 @@ public class CustomerFacade {
                 .orElseThrow(() -> new ResourceNotFound(containerId));
     }
 
+    public void changeStatus(String email, String containerId, String newStatus) {
+        retrieveByEmail(email);
+        log.info("changing the status {}", newStatus);
+
+        ContainerEntity container = containerRepository.findById(Long.valueOf(containerId))
+                .orElseThrow(() -> new ResourceNotFound(containerId));
+        StatusEntity statusEntity = statusRepository.findByName(newStatus)
+                .orElseThrow(() -> new ResourceNotFound(newStatus));
+
+        container.setStatus(statusEntity);
+        containerRepository.save(container);
+
+    }
 
     private static Container toContainerDetail(ContainerEntity container) {
         return Container.builder()

@@ -3,6 +3,7 @@ package nl.ing.java.guild.core.domain.order;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import nl.ing.java.guild.core.domain.BaseEntity;
 
 import javax.persistence.CascadeType;
@@ -29,6 +30,7 @@ class ContainerEntity extends BaseEntity {
     private Set<DocumentEntity> documents;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Setter
     private StatusEntity status;
 
     private BigDecimal price;
