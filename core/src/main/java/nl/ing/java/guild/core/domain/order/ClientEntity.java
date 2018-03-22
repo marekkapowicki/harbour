@@ -1,11 +1,14 @@
 package nl.ing.java.guild.core.domain.order;
 
-import com.google.common.collect.Sets;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import nl.ing.java.guild.core.domain.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Collections;
 import java.util.Set;
 
@@ -15,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 class ClientEntity extends BaseEntity {
     private String name;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client" )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client", cascade = CascadeType.ALL)
     private Set<ContainerEntity> containers;
     private String email;
 

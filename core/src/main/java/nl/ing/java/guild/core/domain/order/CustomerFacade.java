@@ -24,6 +24,7 @@ public class CustomerFacade {
         ClientEntity client = clientRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFound(email));
         client.getContainers().add(toContainerEntity(client, container));
+        clientRepository.save(client); //is it necessary
         return client.getId();
     }
 
