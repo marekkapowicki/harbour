@@ -2,13 +2,16 @@ package nl.ing.java.guild.core.domain.order;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import nl.ing.java.client.customer.ActionDTO;
 import nl.ing.java.client.customer.Container;
+import nl.ing.java.client.customer.ContainerDetail;
 import nl.ing.java.client.customer.CustomerResponse;
 import nl.ing.java.guild.core.domain.error.ResourceNotFound;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +20,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class CustomerFacade {
     private final ClientRepository clientRepository;
+    private final ContainerRepository containerRepository;
 
     @Transactional
     public Long store(String email, Container container) {
@@ -34,6 +38,42 @@ public class CustomerFacade {
         return clientRepository.findByEmail(email)
                 .map(CustomerFacade::toResponse)
                 .orElseThrow(() -> new ResourceNotFound(email));
+    }
+
+    public Container getContainerDetails(String email, String containerId) {
+        retrieveByEmail(email);
+        log.info("client containers data request");
+        return containerRepository.findById(Long.valueOf(containerId))
+                .map(CustomerFacade::toContainerDetail)
+                .orElseThrow(() -> new ResourceNotFound());
+    }
+
+
+    private static Container toContainerDetail(ContainerEntity container) {
+        return Container.builder()
+                .containerId(container.getId().toString())
+                .info(container.getDescription())
+                .location(container.getFinalDestination())
+                .name("someName")
+                .size(container.getSize())
+                .containerDetail(ContainerDetail.builder()
+                        .status(container.getStatus().getName())
+                        .actions(fakeActions())
+                        .build())
+                .build();
+
+    }
+
+    private static List<ActionDTO> fakeActions() {
+        ActionDTO action1 = ActionDTO.builder()
+                .completed(true)
+                .description("Summary Declarations").build();
+
+        ActionDTO action2 = ActionDTO.builder()
+                .completed(false)
+                .description("Inspection").build();
+
+        return Arrays.asList(action1,action2);
     }
 
     private static CustomerResponse toResponse(ClientEntity client) {

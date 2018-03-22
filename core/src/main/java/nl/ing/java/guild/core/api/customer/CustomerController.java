@@ -2,6 +2,7 @@ package nl.ing.java.guild.core.api.customer;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import nl.ing.java.client.customer.Container;
 import nl.ing.java.client.customer.CustomerResponse;
 import nl.ing.java.guild.core.domain.order.CustomerFacade;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,5 +24,11 @@ public class CustomerController {
     public CustomerResponse retrieve(@PathVariable("email") String email) {
         log.info("searching the information for {}", email);
         return customerFacade.retrieveByEmail(email);
+    }
+
+    @GetMapping(value = "/{email}/containers/{containerId}")
+    public Container retrieve(@PathVariable("email") String email, @PathVariable("containerId") String containerId) {
+        log.info("searching the information for {}", email);
+        return customerFacade.getContainerDetails(email, containerId);
     }
 }
