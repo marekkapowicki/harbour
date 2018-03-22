@@ -10,12 +10,13 @@ import java.util.List;
 
 import static nl.ing.java.guild.port.api.Cointainers.apples;
 import static nl.ing.java.guild.port.api.Cointainers.plums;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/port/api/shipments")
 public class PortController {
 
-    @GetMapping
+    @GetMapping(consumes = APPLICATION_JSON_VALUE , produces = APPLICATION_JSON_VALUE)
     public List<Shipment> ports() {
         Shipment applesShipment = new Shipment("ashish.jain@ing.com", apples);
         Shipment plumShipment = new Shipment("ashish.jain@ing.com", plums);
