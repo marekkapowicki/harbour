@@ -13,7 +13,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-@DataJpaTest(showSql = true)
+@DataJpaTest
 @RunWith(SpringRunner.class)
 public class OrderRepositoryTest {
     @Autowired

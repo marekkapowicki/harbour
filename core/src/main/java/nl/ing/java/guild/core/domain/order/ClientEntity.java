@@ -20,6 +20,6 @@ class ClientEntity extends BaseEntity {
     private String email;
 
     public Set<ContainerEntity> getContainers() {
-        return containers == null ? Collections.EMPTY_SET : containers;
+        return containers == null ? Collections.emptySet() : containers;
     }
 }
