@@ -26,6 +26,14 @@ public class MarketPlaceFacade {
         return toResponse(marketRepository.findByDestination(destination));
 
     }
+
+    @Transactional(readOnly = true)
+    public OffersResponse allOffers() {
+        log.info("offer data request");
+        return toResponse(marketRepository.findAll());
+
+    }
+
     private static OffersResponse toResponse (List<OfferEntity> offerEntities){
         List<OfferResponse> offers = offerEntities.stream()
                 .map(MarketPlaceFacade::toOffer)
@@ -35,7 +43,11 @@ public class MarketPlaceFacade {
     }
 
     private static OfferResponse toOffer (OfferEntity offerEntity){
-        return new OfferResponse(offerEntity.getId(),offerEntity.getDestination());
+        return new OfferResponse(offerEntity.getId(),
+                offerEntity.getDestination(),
+                offerEntity.getPrice(),
+                offerEntity.getDurationInDays(),
+                offerEntity.getTransportType().name());
     }
 
 

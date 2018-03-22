@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import nl.ing.java.guild.mp.domain.BaseEntity;
+
+import java.math.BigDecimal;
 
 @Getter
 @AllArgsConstructor
@@ -24,8 +23,12 @@ public class OfferEntity extends BaseEntity {
 
     private String destination;
 
+    private BigDecimal price;
 
+    private Integer durationInDays;
 
+    @Enumerated(EnumType.STRING)
+    private TransportType transportType;
 
 
 }
