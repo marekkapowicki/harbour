@@ -2,11 +2,8 @@ package nl.ing.java.guild.mp.domain.mp;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nl.ing.java.client.Offers.OfferResponse;
-import nl.ing.java.client.Offers.OffersResponse;
-import nl.ing.java.client.customer.Container;
-import nl.ing.java.client.customer.CustomerResponse;
-import nl.ing.java.guild.mp.domain.error.ResourceNotFound;
+import nl.ing.java.client.offers.OfferResponse;
+import nl.ing.java.client.offers.OffersResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
