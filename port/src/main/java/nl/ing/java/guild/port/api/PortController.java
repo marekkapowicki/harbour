@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import static nl.ing.java.guild.port.api.Cointainers.apples;
+import static nl.ing.java.guild.port.api.Cointainers.mangos;
 import static nl.ing.java.guild.port.api.Cointainers.plums;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -20,6 +21,7 @@ public class PortController {
     public List<Shipment> ports() {
         Shipment applesShipment = new Shipment("ashish.jain@ing.com", apples);
         Shipment plumShipment = new Shipment("ashish.jain@ing.com", plums);
-        return Lists.newArrayList(applesShipment, plumShipment);
+        Shipment mangoShipment = new Shipment("ashish.jain@ing.com", mangos);
+        return Lists.newArrayList(applesShipment, plumShipment,mangoShipment);
     }
 }
