@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 public class CustomerFacade {
     private final ClientRepository clientRepository;
     private final ContainerRepository containerRepository;
+    private final StatusRepository statusRepository;
 
     @Transactional
     public Long store(String email, Container container) {
@@ -45,7 +46,7 @@ public class CustomerFacade {
         log.info("client containers data request");
         return containerRepository.findById(Long.valueOf(containerId))
                 .map(CustomerFacade::toContainerDetail)
-                .orElseThrow(() -> new ResourceNotFound());
+                .orElseThrow(() -> new ResourceNotFound(containerId));
     }
 
 
@@ -54,7 +55,7 @@ public class CustomerFacade {
                 .containerId(container.getId().toString())
                 .info(container.getDescription())
                 .location(container.getFinalDestination())
-                .name("someName")
+                .name(container.getName())
                 .size(container.getSize())
                 .containerDetail(ContainerDetail.builder()
                         .status(container.getStatus().getName())
@@ -83,9 +84,11 @@ public class CustomerFacade {
         return new CustomerResponse(containers);
     }
 
-    private static ContainerEntity toContainerEntity(ClientEntity client, Container container) {
-        return new ContainerEntity(client, null, new StatusEntity("NEW", "description"), BigDecimal.ZERO,
-                container.getLocation(), container.getSize(), container.getName());
+    private  ContainerEntity toContainerEntity(ClientEntity client, Container container) {
+        StatusEntity status_sea = statusRepository.findBy(Status.sea)
+                .orElseThrow(() -> new ResourceNotFound("status sea"));
+        return new ContainerEntity(client, null, status_sea, BigDecimal.ZERO,
+                container.getLocation(), container.getSize(), container.getInfo(), container.getName());
     }
 
     private static Container toContainer(ContainerEntity container) {
@@ -93,7 +96,6 @@ public class CustomerFacade {
                 .containerId(container.getId().toString())
                 .info(container.getDescription())
                 .location(container.getFinalDestination())
-                .name("someName")
                 .size(container.getSize()).build();
 
     }

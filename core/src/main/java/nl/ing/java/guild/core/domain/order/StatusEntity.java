@@ -17,4 +17,5 @@ import javax.persistence.Table;
 class StatusEntity extends BaseEntity {
     private String name;
     private String description;
+    private long durationInDays;
 }

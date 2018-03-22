@@ -5,7 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import nl.ing.java.guild.core.domain.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -32,5 +38,7 @@ class ContainerEntity extends BaseEntity {
     private String size;
 
     private String description;
+
+    private String name;
 
 }
