@@ -95,6 +95,7 @@ public class CustomerFacade {
         return Container.builder()
                 .containerId(container.getId().toString())
                 .info(container.getDescription())
+                .name(container.getName())
                 .location(container.getFinalDestination())
                 .size(container.getSize()).build();
 
