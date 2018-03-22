@@ -1,4 +1,4 @@
-package nl.ing.java.guild.mp.domain;
+package nl.ing.java.guild.mp.domain.mp;
 
 import lombok.Builder;
 import lombok.Data;
